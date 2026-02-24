@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "EchoCityIcon";
+    src: url("fonts/EchoCityIcon.woff2") format("woff2"),
+        url("fonts/EchoCityIcon.ttf") format("truetype"),
+        url("fonts/EchoCityIcon.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+.eci, [class^="eci-"], [class*=" eci-"] {
+    /* Use !important to prevent extensions from overriding this font. */
+    font-family: "EchoCityIcon" !important;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.eci-ryuulong:before {
+    content: "\f000";
+}
+.eci-echocity:before {
+    content: "\f001";
+}
