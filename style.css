@@ -1,8 +1,8 @@
 @font-face {
     font-family: "EchoCityIcon";
-    src: url("fonts/EchoCityIcon.woff2") format("woff2"),
-        url("fonts/EchoCityIcon.ttf") format("truetype"),
-        url("fonts/EchoCityIcon.woff") format("woff");
+    src: url("https://cdn.jsdelivr.net/gh/HSFAkira/Echo-City-Icons@main/fonts/EchoCityIcon.woff2") format("woff2"),
+        url("https://cdn.jsdelivr.net/gh/HSFAkira/Echo-City-Icons@main/fonts/EchoCityIcon.ttf") format("truetype"),
+        url("https://cdn.jsdelivr.net/gh/HSFAkira/Echo-City-Icons@main/fonts/EchoCityIcon.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: block;
