@@ -2993,7 +2993,7 @@ ul#privmsgs-menu :is(li.inBox, li.sentBox, li.outBox, li.saveBox):has(a):before 
     display:none;
 }
 
-.attr-tag .material-symbols-rounded {
+.top-post-profile-cont .postprofile-atributo .attr-tag .material-symbols-rounded {
     background: var(--colorAtributo);
     background-clip: text;
     color: transparent;
@@ -3376,3 +3376,4 @@ fieldset.submit-buttons {
     content: "Perfil"
 
 }
+
