@@ -2982,8 +2982,23 @@ ul#privmsgs-menu :is(li.inBox, li.sentBox, li.outBox, li.saveBox):has(a):before 
 }
 
 .top-post-profile-cont .postprofile-name {
+    align-items: center;
+    display: flex;
     font: 900 2rem/1em var(--fontDisplay);
-    text-align: left
+    gap: .5rem;
+    justify-content: flex-start;
+}
+
+.top-post-profile-cont .postprofile-atributo .fieldProfilePostTitle {
+    display:none;
+}
+
+.attr-tag .material-symbols-rounded {
+    background: var(--colorAtributo);
+    background-clip: text;
+    color: transparent;
+    font-size: 1.5rem;
+    pointer-events:none;
 }
 
 .top-post-profile-cont .postprofile-name strong {
@@ -3359,4 +3374,5 @@ fieldset.submit-buttons {
 
 .contact-field-extras a:has(#i_icon_profile):after {
     content: "Perfil"
+
 }
