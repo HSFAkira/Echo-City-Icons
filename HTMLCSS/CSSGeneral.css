@@ -3377,3 +3377,249 @@ fieldset.submit-buttons {
 
 }
 
+/*SUBFOROS*/
+
+.foro-A {
+    align-items: stretch;
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    width: 100%
+}
+
+.foro-A-cont {
+    align-items: center;
+    backdrop-filter: blur(5px);
+    background: var(--transFondoA);
+    border-radius: 1em;
+    display: flex;
+    gap: 2em;
+    padding: 4em 2em
+}
+
+.foro-A h2.foro-A-header {
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(45deg, var(--colorMainA), var(--colorMainB));
+    background-clip: text;
+    font: 900 3rem/1em var(--fontDisplay);
+    font-stretch: 125%;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    writing-mode: sideways-lr
+}
+
+.foro-A-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 100%
+}
+
+.topics-row {
+    align-items: center;
+    display: flex;
+    gap: 2em;
+    justify-content: space-between
+}
+
+.topics-main-sect {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 50%
+}
+
+.foro-A .topicTitle {
+    font: 700 1.25em/1em var(--fontDisplay);
+    font-stretch: 50%
+}
+
+.topics-subtitle {
+    align-items: center;
+    display: flex;
+    font: 1rem/1em var(--fontCondensed);
+    font-stretch: 50%;
+    gap: 1em
+}
+
+.topics-pagination * {
+    float: none;
+    font-size: 1rem
+}
+
+.topics-pagination .pagination span {
+    display: flex;
+    gap: .5em
+}
+
+.topics-pagination .pagination span a {
+    background: var(--colorLink);
+    border: 0;
+    border-radius: 50%;
+    color: var(--colorFondoA);
+    font: 700 .5em/1em var(--fontCondensed);
+    margin: 0;
+    padding: .5em;
+    text-align: center;
+    width: 1rem
+}
+
+.topics-pagination .pagination span a:hover {
+    background: var(--colorHover);
+}
+
+.topics-pagination .pagination span span {
+    display: none
+}
+
+.topics-leftbox {
+    align-items: center;
+    display: flex;
+    gap: 2em
+}
+
+.topics-leftbox dfn {
+    display: none
+}
+
+.foro-A :is(.topics-po, .topics-vi) {
+    align-items: center;
+    display: flex;
+    gap: 1em;
+    width: 5em
+}
+
+.foro-A .topics-lapo {
+    align-items: center;
+    display: flex;
+    font: 1rem/1em var(--fontCondensed);
+    font-stretch: 50%;
+    gap: 1em;
+    width: 200px
+}
+
+.foro-A .topics-lapo-ava {
+    background: linear-gradient(45deg, var(--colorMainA), var(--colorMainB));
+    border-radius: 50%;
+    height: 3em;
+    padding: .1rem;
+    width: 3em
+}
+
+.foro-A .topics-lapo-ava-cont {
+    align-items: center;
+    border-radius: 50%;
+    display: flex;
+    height: 3em;
+    justify-content: center;
+    overflow: hidden;
+    width: 3em
+}
+
+.foro-A .topics-lapo-ava-cont img {
+    width: 100%
+}
+
+@keyframes nuevoMensaje {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1);
+    }
+}
+
+.topics-row::before {
+    align-items: center;
+    display: flex;
+    font: 2rem/1em var(--fontGoogle);
+    font-variation-settings: var(--iconSmall);
+    height: 2rem;
+    justify-content: center;
+    width: 2rem;
+}
+
+[style*="men10"]::before {
+    content: "\e032";
+}
+
+[style*="nue10"]::before {
+    content: "\f5cf";
+}
+
+[style*="nuepop10"]::before {
+    content: "\f5cf";
+}
+
+[style*="mencer10"]::before {
+    content: "\e897";
+}
+
+[style*="nuecer10"]::before {
+    content: "\f5cf";
+}
+
+[style*="menpop10"]::before {
+    content: "\e87d";
+}
+
+[style*="anu10"]::before {
+    content: "\ef49";
+}
+
+[style*="anunue10"]::before {
+    content: "\f5cf";
+}
+
+[style*="glo10"]::before {
+    content: "\e64c";
+}
+
+[style*="glonuep10"]::before {
+    content: "\f5cf";
+}
+
+[style*="not10"]::before {
+    content: "\f562";
+}
+
+[style*="notnue10"]::before {
+    content: "\f5cf";
+}
+
+[style*="nue10"]::before,
+[style*="nuepop10"]::before,
+[style*="nuecer10"]::before,
+[style*="anunue10"]::before,
+[style*="glonuep10"]::before,
+[style*="notnue10"]::before {
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-name: nuevoMensaje;
+    background: transparent;
+    color: var(--colorMainB);
+}
+
+.topics-lastlinks {
+    vertical-align: middle
+}
+
+.topics-lastlinks a img {
+    display: none
+}
+
+.topics-lastlinks a:before {
+    content: "\e5c8";
+    font: 1em/1em var(--fontGoogle);
+    font-variation-settings: var(--iconSmall);
+}
