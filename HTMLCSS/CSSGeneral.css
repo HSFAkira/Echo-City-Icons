@@ -3582,7 +3582,7 @@ a.forumtitle:hover {
 }
 
 .forum-main-sect br:not(.forum-desc-B-desc br) {
-    display: none;
+    display: inline;
 }
 
 .cat-A:has(mainrolzone) a.forumtitle {
