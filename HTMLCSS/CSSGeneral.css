@@ -3581,7 +3581,7 @@ a.forumtitle:hover {
     z-index: 2;
 }
 
-.forum-main-sect br:not(.forum-desc-B-desc br) {
+.forum-main-sect br:not(.forum-desc-B-desc br,.forum-desc-C-desc br) {
     display: inline;
 }
 
