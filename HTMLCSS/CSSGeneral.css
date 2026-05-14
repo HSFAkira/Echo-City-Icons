@@ -3035,6 +3035,7 @@ ul#privmsgs-menu :is(li.inBox, li.sentBox, li.outBox, li.saveBox):has(a):before 
     flex-direction: column;
     flex-shrink: 0;
     font: 700 1em/1em var(--fontDisplay);
+    gap: .5rem;
     text-align: center;
     text-transform: uppercase;
     width: 120px
@@ -3044,7 +3045,7 @@ ul#privmsgs-menu :is(li.inBox, li.sentBox, li.outBox, li.saveBox):has(a):before 
     display: none
 }
 
-.top-post-profile-rank .material-symbols-rounded {
+.top-post-profile-rank b {
     color: var(--colorGroupMain);
     font-size: 2rem;
     margin: 0;
