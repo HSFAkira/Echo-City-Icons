@@ -3049,17 +3049,20 @@ ul#privmsgs-menu :is(li.inBox, li.sentBox, li.outBox, li.saveBox):has(a):before 
     color: var(--colorGroupMain);
     font-size: 2rem;
     margin: 0;
+    order:0;
 }
 
 .top-post-profile-rank .rankName {
     font: 700 1rem/1em var(--fontDisplay);
-    font-stretch: var(--fontWExpn)
+    font-stretch: var(--fontWExpn);
+    order:1;
 }
 
 .top-post-profile-rank .rangoOcupacion {
     color: var(--colorTextA);
     font: .75rem/1em var(--fontCondensed);
-    font-stretch: var(--fontWCond)
+    font-stretch: var(--fontWCond);
+    order:1;
 }
 
 .top-post-profile-rank .rangoOcupacion .fieldProfilePostTitle {
