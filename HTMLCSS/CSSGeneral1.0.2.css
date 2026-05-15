@@ -1436,7 +1436,7 @@ p.descriptionSite em {
 }
 
 .staffSection:has(a[href="/u2"]) .staffPortraitIMG {
-    background: url('https://i.servimg.com/u/f70/20/61/18/37/staffj10.jpg') center/100% no-repeat;
+    background: url('https://i.servimg.com/u/f70/20/61/18/37/icon112.png') center/100% no-repeat;
 }
 
 .staffSection:has(a[href="/u176"]) .staffPortraitIMG {
@@ -1444,7 +1444,7 @@ p.descriptionSite em {
 }
 
 .staffSection:has(a[href="/u3"]) .staffPortraitIMG {
-    background: url('https://i.servimg.com/u/f70/20/61/18/37/staffg10.jpg') center/100% no-repeat;
+    background: url('https://i.servimg.com/u/f70/20/61/18/37/icon113.png') center/100% no-repeat;
 }
 
 /*Temas libres*/
