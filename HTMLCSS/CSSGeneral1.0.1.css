@@ -3186,11 +3186,11 @@ h2.topicTitle {
 }
 
 .top-profile-contact a:has(img[src*="diario10"]):before {
-    content: "book_2"
+    content: "search"
 }
 
 .top-profile-contact a:has(img[src*="diario10"]):after {
-    content: "Diario"
+    content: "Búsqueda"
 }
 
 .top-profile-contact a:has(img[src*="npcs10"]):before {
