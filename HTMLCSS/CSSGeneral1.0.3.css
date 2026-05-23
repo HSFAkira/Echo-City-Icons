@@ -1302,6 +1302,7 @@ p.descriptionSite em {
 #updateList .updateText {
     font: 1em/1em var(--fontCondensed);
     font-stretch: var(--fontWCond);
+    width: 100%;
 }
 
 #updateList .updateLink {
