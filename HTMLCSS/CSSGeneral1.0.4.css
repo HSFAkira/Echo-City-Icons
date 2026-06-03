@@ -637,7 +637,7 @@ body {
     width: 100%;
 }
 
-@keyframes animationCity {
+/*@keyframes animationCity {
     from {
         transform: translateX(0px);
     }
@@ -645,7 +645,7 @@ body {
     to {
         transform: translateX(-1200px);
     }
-}
+}*/
 
 .headerPart {
     height: 750px;
@@ -654,9 +654,9 @@ body {
 }
 
 .headerCity {
-    animation-name: animationCity;
+    /*animation-name: animationCity;
     animation-iteration-count: infinite;
-    animation-timing-function: linear;
+    animation-timing-function: linear;*/
     mask-position: bottom;
     mask-repeat: repeat no-repeat;
     mask-size: auto 750px;
