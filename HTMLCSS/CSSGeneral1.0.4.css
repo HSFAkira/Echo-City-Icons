@@ -2452,8 +2452,8 @@ ul#privmsgs-menu :is(li.inBox, li.sentBox, li.outBox, li.saveBox):has(a):before 
 }
 
 .award_tooltiptext {
-    background: var(--colorFondoB);
-    border: 0;
+    background: var(--colorFondoA);
+    border: .1rem solid var(--colorGroupMain);
     border-radius: .5rem;
     font: .75rem/1em var(--fontSans);
     padding: .5rem
@@ -2464,6 +2464,10 @@ ul#privmsgs-menu :is(li.inBox, li.sentBox, li.outBox, li.saveBox):has(a):before 
     font: 700 .75rem/1em var(--fontDisplay);
     font-stretch: var(--fontWExpn);
     text-transform: uppercase
+}
+
+.award_tooltiptext::after {
+    border-color: transparent transparent transparent var(--colorGroupMain) !important;
 }
 
 /*MP*/
