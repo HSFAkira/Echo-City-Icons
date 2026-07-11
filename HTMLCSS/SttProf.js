@@ -1,9 +1,9 @@
 (function() {
-    // Configuración básica del gráfico
-    const MAX_VALOR = 10; // Escala fija del 1 al 10
-    const TAMANO = 220;   // Tamaño del SVG
+    // Configuración calibrada para contenedor de 390x390
+    const MAX_VALOR = 10; 
+    const TAMANO = 450;   // Lienzo matemático interno más grande para dar margen
     const CENTRO = TAMANO / 2;
-    const RADIO = (TAMANO / 2) - 25; // Margen para que los textos no se corten
+    const RADIO = 140;    // Radio del pentágono (deja ~85px libres en los bordes para los textos)
 
     // Función matemática para calcular las coordenadas de los 5 vértices
     const obtenerCoordenadas = (indice, valor, maximo) => {
@@ -19,7 +19,6 @@
         const campoStats = document.getElementById('field_id28');
         if (!campoStats) return;
 
-        // Buscamos el contenedor del texto plano para leer los datos antes de borrar nada
         const contenedorTexto = campoStats.querySelector('.field_uneditable');
         if (!contenedorTexto || campoStats.querySelector('.rpg-chart-container')) return;
 
@@ -38,7 +37,6 @@
             });
         }
 
-        // Si no hay exactamente 5 stats, no hacemos nada
         if (stats.length !== 5) return;
 
         const maximoGrafico = MAX_VALOR; 
@@ -68,14 +66,26 @@
 
             ejesHTML += `<line x1="${CENTRO}" y1="${CENTRO}" x2="${pMax.x}" y2="${pMax.y}" class="chart-axis" />`;
 
+            // Algoritmo de desplace fino para evitar textos encimados o cortados
             let anchor = 'middle';
             let ajusteY = 0;
-            if (pMax.x < CENTRO - 10) anchor = 'end';
-            if (pMax.x > CENTRO + 10) anchor = 'start';
-            if (pMax.y > CENTRO + 10) ajusteY = 12;
-            if (pMax.y < CENTRO - 10) ajusteY = -5;
+            let ajusteX = 0;
 
-            textosHTML += `<text x="${pMax.x}" y="${pMax.y + ajusteY}" text-anchor="${anchor}" class="chart-label">${stat.nombre} (${stat.valor})</text>`;
+            if (pMax.x < CENTRO - 20) {
+                anchor = 'end';      // Lado izquierdo del pentágono
+                ajusteX = -8;
+            } else if (pMax.x > CENTRO + 20) {
+                anchor = 'start';    // Lado derecho del pentágono
+                ajusteX = 8;
+            }
+
+            if (pMax.y > CENTRO + 20) {
+                ajusteY = 15;        // Vértices de abajo
+            } else if (pMax.y < CENTRO - 20) {
+                ajusteY = -12;       // Vértice superior central
+            }
+
+            textosHTML += `<text x="${pMax.x + ajusteX}" y="${pMax.y + ajusteY}" text-anchor="${anchor}" class="chart-label">${stat.nombre} (${stat.valor})</text>`;
         });
 
         // 4. ENSAMBLAR EL SVG COMPLETO
@@ -87,15 +97,13 @@
                     <polygon points="${puntosUsuario.join(' ')}" class="chart-user-polygon" />
                     ${stats.map((stat, i) => {
                         const p = obtenerCoordenadas(i, stat.valor, maximoGrafico);
-                        return `<circle cx="${p.x}" cy="${p.y}" r="3.5" class="chart-user-point" />`;
+                        return `<circle cx="${p.x}" cy="${p.y}" r="4" class="chart-user-point" />`;
                     }).join('')}
                     ${textosHTML}
                 </svg>
             </div>
         `;
 
-        // 5. LIMPIEZA ABSOLUTA: Borramos todo el HTML interno de #field_id28
-        // e inyectamos directamente el gráfico
         campoStats.innerHTML = svgHTML;
     };
 
