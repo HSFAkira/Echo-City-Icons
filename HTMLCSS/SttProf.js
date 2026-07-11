@@ -1,7 +1,7 @@
 (function() {
     // Configuración básica del gráfico
     const MAX_VALOR = 10; // Escala fija del 1 al 10
-    const TAMANO = 220;   // Tamaño del SVG (un poco más grande para el perfil)
+    const TAMANO = 220;   // Tamaño del SVG
     const CENTRO = TAMANO / 2;
     const RADIO = (TAMANO / 2) - 25; // Margen para que los textos no se corten
 
@@ -16,18 +16,17 @@
     };
 
     const generarGraficoPentagonoPerfil = () => {
-        // Apuntamos directamente al ID de tu campo de estadísticas
         const campoStats = document.getElementById('field_id28');
         if (!campoStats) return;
 
-        // Buscamos el contenedor del texto plano (el uneditable)
+        // Buscamos el contenedor del texto plano para leer los datos antes de borrar nada
         const contenedorTexto = campoStats.querySelector('.field_uneditable');
         if (!contenedorTexto || campoStats.querySelector('.rpg-chart-container')) return;
 
         const textoOriginal = contenedorTexto.textContent.trim();
         if (!textoOriginal) return;
 
-        // 1. PARSEAR LAS STATS (Soporta letras con acentos, espacios y números)
+        // 1. PARSEAR LAS STATS
         const regex = /([a-zA-ZáéíóúÁÉÍÓÚñÑ]+)\s*:\s*(\d+)/g;
         let coincidencias;
         const stats = [];
@@ -39,7 +38,7 @@
             });
         }
 
-        // Si el usuario no tiene exactamente 5 stats configuradas, no dibujamos el pentágono
+        // Si no hay exactamente 5 stats, no hacemos nada
         if (stats.length !== 5) return;
 
         const maximoGrafico = MAX_VALOR; 
@@ -67,10 +66,8 @@
             
             puntosUsuario.push(`${pUser.x},${pUser.y}`);
 
-            // Línea del eje central a la esquina
             ejesHTML += `<line x1="${CENTRO}" y1="${CENTRO}" x2="${pMax.x}" y2="${pMax.y}" class="chart-axis" />`;
 
-            // Ajustes de posición para las etiquetas alrededor del círculo
             let anchor = 'middle';
             let ajusteY = 0;
             if (pMax.x < CENTRO - 10) anchor = 'end';
@@ -85,30 +82,23 @@
         const svgHTML = `
             <div class="rpg-chart-container">
                 <svg viewBox="0 0 ${TAMANO} ${TAMANO}" width="100%" height="100%">
-                    <!-- Red de fondo -->
                     ${lineasGuiaHTML}
                     ${ejesHTML}
-                    <!-- Polígono de estadísticas del usuario -->
                     <polygon points="${puntosUsuario.join(' ')}" class="chart-user-polygon" />
-                    <!-- Esferas en los vértices del usuario -->
                     ${stats.map((stat, i) => {
                         const p = obtenerCoordenadas(i, stat.valor, maximoGrafico);
                         return `<circle cx="${p.x}" cy="${p.y}" r="3.5" class="chart-user-point" />`;
                     }).join('')}
-                    <!-- Textos -->
                     ${textosHTML}
                 </svg>
             </div>
         `;
 
-        // Ocultamos físicamente la visualización del texto feo original ("Stat:0, Stat:0...")
-        contenedorTexto.style.display = 'none';
-        
-        // Inyectamos el gráfico justo debajo del título del campo en la estructura
-        campoStats.querySelector('.fieldContent').insertAdjacentHTML('beforeend', svgHTML);
+        // 5. LIMPIEZA ABSOLUTA: Borramos todo el HTML interno de #field_id28
+        // e inyectamos directamente el gráfico
+        campoStats.innerHTML = svgHTML;
     };
 
-    // Ejecución controlada
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', generarGraficoPentagonoPerfil);
     } else {
