@@ -64,7 +64,7 @@
         const puntosUsuario = [];
 
         // Dimensiones FIJAS para los cuadritos de las etiquetas
-        const ANCHO_CAJA = 100;
+        const ANCHO_CAJA = 26;
         const ALTO_CAJA = 26;
 
         stats.forEach((stat, i) => {
