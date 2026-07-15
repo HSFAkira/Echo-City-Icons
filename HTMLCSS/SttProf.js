@@ -1,8 +1,14 @@
 (function() {
     const MAX_VALOR = 10; 
-    const TAMANO = 450;   // Lienzo matemático interno
+    const TAMANO = 390;   // Lienzo matemático idéntico al contenedor físico (100% real)
     const CENTRO = TAMANO / 2;
-    const RADIO = 165;    // ¡Mucho más grande! El polígono ahora aprovecha todo el espacio
+    
+    // Hacemos las cajitas perfectamente cuadradas (26px)
+    const LADO_CAJA = 26;
+    
+    // El radio máximo será la mitad del total (195px) menos la mitad de la caja (13px)
+    // para que la punta del número quede perfectamente al borde sin salirse un solo píxel.
+    const RADIO = CENTRO - (LADO_CAJA / 2); 
 
     const obtenerCoordenadas = (indice, valor, maximo) => {
         const angulo = (Math.PI * 2 / 5) * indice - (Math.PI / 2);
@@ -63,9 +69,6 @@
         let contenedoresHTML = '';
         const puntosUsuario = [];
 
-        // Hacemos las cajitas perfectamente cuadradas
-        const LADO_CAJA = 28;
-
         stats.forEach((stat, i) => {
             const pMax = obtenerCoordenadas(i, maximoGrafico, maximoGrafico);
             const pUser = obtenerCoordenadas(i, stat.valor, maximoGrafico);
@@ -73,8 +76,7 @@
             puntosUsuario.push(`${pUser.x},${pUser.y}`);
             ejesHTML += `<line x1="${CENTRO}" y1="${CENTRO}" x2="${pMax.x}" y2="${pMax.y}" class="chart-axis" />`;
 
-            // Restamos la mitad del tamaño de la caja a la coordenada máxima.
-            // Esto hace que el CENTRO de tu caja cuadrada coincida EXACTAMENTE con la punta del pentágono.
+            // Centramos la caja de forma exacta en la punta del polígono
             const cajaX = pMax.x - (LADO_CAJA / 2);
             const cajaY = pMax.y - (LADO_CAJA / 2);
 
