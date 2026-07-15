@@ -1,8 +1,8 @@
 (function() {
     const MAX_VALOR = 10; 
-    const TAMANO = 450;   
+    const TAMANO = 450;   // Lienzo matemático interno
     const CENTRO = TAMANO / 2;
-    const RADIO = 125;    
+    const RADIO = 165;    // ¡Mucho más grande! El polígono ahora aprovecha todo el espacio
 
     const obtenerCoordenadas = (indice, valor, maximo) => {
         const angulo = (Math.PI * 2 / 5) * indice - (Math.PI / 2);
@@ -58,14 +58,13 @@
             lineasGuiaHTML += `<polygon points="${puntosGuia.join(' ')}" class="chart-grid-line" />`;
         }
 
-        // 2. EJES Y POLÍGONO DEL JUGADOR
+        // 2. EJES, POLÍGONO DEL JUGADOR Y BOTONES DE NÚMEROS
         let ejesHTML = '';
         let contenedoresHTML = '';
         const puntosUsuario = [];
 
-        // Dimensiones FIJAS para los cuadritos de las etiquetas
-        const ANCHO_CAJA = 26;
-        const ALTO_CAJA = 26;
+        // Hacemos las cajitas perfectamente cuadradas
+        const LADO_CAJA = 28;
 
         stats.forEach((stat, i) => {
             const pMax = obtenerCoordenadas(i, maximoGrafico, maximoGrafico);
@@ -74,33 +73,16 @@
             puntosUsuario.push(`${pUser.x},${pUser.y}`);
             ejesHTML += `<line x1="${CENTRO}" y1="${CENTRO}" x2="${pMax.x}" y2="${pMax.y}" class="chart-axis" />`;
 
-            // Desplazamientos inteligentes de las cajas según su cuadrante para que no pisen el gráfico
-            let desplaceX = 0;
-            let desplaceY = 0;
+            // Restamos la mitad del tamaño de la caja a la coordenada máxima.
+            // Esto hace que el CENTRO de tu caja cuadrada coincida EXACTAMENTE con la punta del pentágono.
+            const cajaX = pMax.x - (LADO_CAJA / 2);
+            const cajaY = pMax.y - (LADO_CAJA / 2);
 
-            if (pMax.x < CENTRO - 20) {
-                desplaceX = -ANCHO_CAJA - 12; // Izquierda
-            } else if (pMax.x > CENTRO + 20) {
-                desplaceX = 12;               // Derecha
-            } else {
-                desplaceX = -ANCHO_CAJA / 2;  // Centro (vértice superior)
-            }
-
-            if (pMax.y > CENTRO + 20) {
-                desplaceY = 10;               // Abajo
-            } else if (pMax.y < CENTRO - 20) {
-                desplaceY = -ALTO_CAJA - 12;  // Arriba
-            } else {
-                desplaceY = -ALTO_CAJA / 2;   // Centrado vertical
-            }
-
-            const cajaX = pMax.x + desplaceX;
-            const cajaY = pMax.y + desplaceY;
-
-            // Inyectamos HTML real usando foreignObject para un control absoluto
             contenedoresHTML += `
-                <foreignObject x="${cajaX}" y="${cajaY}" width="${ANCHO_CAJA}" height="${ALTO_CAJA}">
-                    <div class="chart-tag-box" title="${stat.nombre}" xmlns="http://www.w3.org/1999/xhtml">${stat.valor}</div>
+                <foreignObject x="${cajaX}" y="${cajaY}" width="${LADO_CAJA}" height="${LADO_CAJA}">
+                    <div class="chart-tag-box" title="${stat.nombre}" xmlns="http://www.w3.org/1999/xhtml">
+                        ${stat.valor}
+                    </div>
                 </foreignObject>
             `;
         });
@@ -115,7 +97,7 @@
                     <polygon points="${puntosUsuario.join(' ')}" class="chart-user-polygon" />
                     ${stats.map((stat, i) => {
                         const p = obtenerCoordenadas(i, stat.valor, maximoGrafico);
-                        return `<circle cx="${p.x}" cy="${p.y}" r="4" class="chart-user-point" />`;
+                        return `<circle cx="${p.x}" cy="${p.y}" r="3.5" class="chart-user-point" />`;
                     }).join('')}
                     ${contenedoresHTML}
                 </svg>
