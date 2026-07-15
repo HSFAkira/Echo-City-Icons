@@ -604,7 +604,7 @@
 #bigProfilePage .bigProfilePageC {
     display: grid;
     gap: 2rem;
-    grid-template-columns: 0 1fr 8rem 1fr 0;
+    grid-template-columns: 0 1fr 1fr 0;
     grid-template-rows: repeat(6, 1fr)
 }
 
@@ -672,8 +672,8 @@
 }
 
 #bigProfilePage .bigProfilePageC .pageCTalents {
-    grid-column: 4;
-    grid-row: 5/span 2;
+    grid-column: 3;
+    grid-row: 3/span 4;
 }
 
 #bigProfilePage .bigProfilePageC :is(.pageCResume, .pageCSkills, .pageCTalents) .profileField {
@@ -845,27 +845,30 @@ a.linksSearchButton span.material-symbols-rounded {
 }
 
 /* Contenedor del campo principal */
-#field_id28 {
+#bigProfilePage .bigProfilePageC :is(.pageCResume) #field_id28 {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 390px;
-    height: 390px;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     box-sizing: border-box;
     padding: 0;
 }
 
 .rpg-chart-container {
-    width: 390px;
-    height: 390px;
+    width: 100%;
+    height: 100%;
     display: block;
 }
 
 /* Tablero de fondo sólido usando tu color de fondo primario */
 .chart-base-solid {
-    fill: var(--colorFondoA, #0D0D0D);
-    stroke: var(--colorFondoB, #222222);
+    fill: var(--colorFondoA);
+    stroke: var(--colorFondoB);
     stroke-width: 2;
 }
 
