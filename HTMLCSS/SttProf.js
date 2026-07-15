@@ -100,10 +100,7 @@
             // Inyectamos HTML real usando foreignObject para un control absoluto
             contenedoresHTML += `
                 <foreignObject x="${cajaX}" y="${cajaY}" width="${ANCHO_CAJA}" height="${ALTO_CAJA}">
-                    <div class="chart-tag-box" xmlns="http://www.w3.org/1999/xhtml">
-                        <span class="chart-stat-name">${stat.nombre}</span>
-                        <span class="chart-stat-num">(${stat.valor})</span>
-                    </div>
+                    <div class="chart-tag-box" title="${stat.nombre}" xmlns="http://www.w3.org/1999/xhtml">${stat.valor}</div>
                 </foreignObject>
             `;
         });
