@@ -1,13 +1,10 @@
 (function() {
     const MAX_VALOR = 10; 
-    const TAMANO = 390;   // Lienzo matemático idéntico al contenedor físico (100% real)
+    const TAMANO = 390;   // Contenedor físico 1:1
     const CENTRO = TAMANO / 2;
     
-    // Hacemos las cajitas perfectamente cuadradas (26px)
+    // Dimensiones de las cajitas de los números (26px)
     const LADO_CAJA = 26;
-    
-    // El radio máximo será la mitad del total (195px) menos la mitad de la caja (13px)
-    // para que la punta del número quede perfectamente al borde sin salirse un solo píxel.
     const RADIO = CENTRO - (LADO_CAJA / 2); 
 
     const obtenerCoordenadas = (indice, valor, maximo) => {
@@ -44,7 +41,7 @@
 
         const maximoGrafico = MAX_VALOR; 
 
-        // 1. PENTÁGONO BASE SÓLIDO
+        // 1. PENTÁGONO BASE SÓLIDO (Este representa el Nivel 10)
         const puntosBase = [];
         for (let i = 0; i < 5; i++) {
             const p = obtenerCoordenadas(i, maximoGrafico, maximoGrafico);
@@ -52,10 +49,10 @@
         }
         const pentagonoBaseHTML = `<polygon points="${puntosBase.join(' ')}" class="chart-base-solid" />`;
 
-        // Red de guías interna
+        // NUEVO: Dibujamos las guías internas para los niveles del 1 al 9
         let lineasGuiaHTML = '';
-        for (let nivel = 1; nivel <= 3; nivel++) {
-            const escala = nivel / 4;
+        for (let nivel = 1; nivel <= 9; nivel++) {
+            const escala = nivel / MAX_VALOR; // Fracción exacta (0.1, 0.2 ... 0.9)
             const puntosGuia = [];
             for (let i = 0; i < 5; i++) {
                 const p = obtenerCoordenadas(i, escala * maximoGrafico, maximoGrafico);
@@ -76,7 +73,6 @@
             puntosUsuario.push(`${pUser.x},${pUser.y}`);
             ejesHTML += `<line x1="${CENTRO}" y1="${CENTRO}" x2="${pMax.x}" y2="${pMax.y}" class="chart-axis" />`;
 
-            // Centramos la caja de forma exacta en la punta del polígono
             const cajaX = pMax.x - (LADO_CAJA / 2);
             const cajaY = pMax.y - (LADO_CAJA / 2);
 
