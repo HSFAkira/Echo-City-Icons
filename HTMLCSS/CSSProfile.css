@@ -1,0 +1,943 @@
+/*PERFIL GRANDE*/
+#bigProfilePage {
+    -windowed-effect-h: linear-gradient(90deg, var(--colorGroupMain), var(--colorFondoB));
+    --windowed-effect-v: linear-gradient(var(--colorGroupMain), var(--colorFondoB));
+    --windowed-effect-x: linear-gradient(135deg, var(--colorGroupMain), var(--colorFondoB));
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: auto 150px;
+}
+
+#bigProfilePage input[name="bigProfileButtons"] {
+    display: none
+}
+
+#bigProfilePage .bigProfilebuttons {
+    background: var(--colorFondoA);
+    border-radius: 1rem;
+    box-shadow: var(--shadowA);
+    display: flex;
+    flex-direction: column;
+    grid-column: 2;
+    grid-row: 1;
+    justify-content: space-evenly;
+    margin: 0;
+}
+
+#bigProfilePage .bigProfilebuttons label.bigProfilebutton {
+    align-items: center;
+    background: var(--colorFondoB);
+    border: .1rem solid var(--colorGroupMain);
+    border-radius: 1rem;
+    color: var(--colorGroupMain);
+    display: flex;
+    flex-grow: 1;
+    font-size: 2rem;
+    justify-content: center;
+    margin: 2rem
+}
+
+#bigProfilePage .bigProfilebuttons label.bigProfilebutton:hover {
+    background: var(--colorGroupMain);
+    color: var(--colorFondoA)
+}
+
+#bigProfilePage:has(input#bigProfilePageA:checked) label.bigProfilebutton[for="bigProfilePageA"],
+#bigProfilePage:has(input#bigProfilePageB:checked) label.bigProfilebutton[for="bigProfilePageB"],
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageC"] {
+    background: var(--colorGroupMain);
+    color: var(--colorFondoA)
+}
+
+#bigProfilePage :is(.bigProfilePageA, .bigProfilePageB, .bigProfilePageC) {
+    grid-column: 1;
+    grid-row: 1;
+    height: 750px;
+    opacity: 0;
+    pointer-events: none;
+    position: relative;
+    top: -100%;
+    transition: .5s
+}
+
+#bigProfilePage :is(.bigProfilePageA, .bigProfilePageB, .bigProfilePageC):has(input[name="bigProfileButtons"]:checked) {
+    opacity: 1;
+    pointer-events: auto;
+    top: 0;
+}
+
+/*Page A*/
+#bigProfilePage .bigProfilePageA {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: calc(300px + .2rem) auto
+}
+
+#bigProfilePage .bigProfilePageA .pageABasicProfile {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+#bigProfilePage .bigProfilePageA .pageAAvatar {
+    border-radius: 1rem;
+    box-shadow: var(--shadowA);
+    padding: .1rem;
+}
+
+#bigProfilePage .bigProfilePageA .pageAAvatar img {
+    border-radius: 1rem;
+    height: 500px;
+    width: 300px;
+}
+
+#bigProfilePage .bigProfilePageA .pageAName {
+    background: var(--colorGroupMain);
+    border-radius: 1rem;
+    box-shadow: var(--shadowA);
+    display: flex;
+    font: 0rem/1rem var(--fontSans);
+    justify-content: center;
+    padding: 1rem;
+    text-align: center;
+}
+
+#bigProfilePage .bigProfilePageA .pageAName span strong {
+    color: var(--colorFondoA);
+    font: 900 1.25rem/1em var(--fontDisplay);
+    font-stretch: var(--fontWExpn);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#bigProfilePage .bigProfilePageA .pageARank {
+    align-items: center;
+    background: var(--colorGroupMain);
+    border-radius: 1rem;
+    box-shadow: var(--shadowA);
+    color: var(--colorFondoA);
+    display: grid;
+    gap: 0 .5rem;
+    justify-content: center;
+    padding: 1rem
+}
+
+#bigProfilePage .bigProfilePageA .pageARank b {
+    font-size: 2rem;
+    grid-column: 1;
+    grid-row: 1/span 2
+}
+
+#bigProfilePage .bigProfilePageA .pageARank i.rankName {
+    font: 700 1rem/1em var(--fontDisplay);
+    font-stretch: var(--fontWExpn);
+    grid-column: 2;
+    text-transform: uppercase
+}
+
+#bigProfilePage .bigProfilePageA .pageARank .profileField {
+    font: 1rem/1em var(--fontSans);
+    font-stretch: var(--fontWCond);
+    grid-column: 2
+}
+
+#bigProfilePage .bigProfilePageA .pageALastVisit {
+    border-radius: 1rem;
+    box-shadow: var(--shadowA);
+    padding: .1rem;
+}
+
+#bigProfilePage .bigProfilePageA .pageALastVisitCont {
+    align-items: center;
+    background: var(--colorFondoA);
+    border-radius: 1rem;
+    display: flex;
+    gap: .5rem;
+    font-stretch: var(--fontWCond);
+    justify-content: center;
+    padding: 1rem;
+}
+
+#bigProfilePage .bigProfilePageA .pageALastVisitTitle {
+    color: var(--colorGroupMain);
+    font: 700 1rem/1em var(--fontSans);
+    font-stretch: var(--fontWCond);
+    text-transform: uppercase
+}
+
+#bigProfilePage .bigProfilePageA .pageADetailsProfile {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center
+}
+
+#bigProfilePage .bigProfilePageA .pageADates {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr
+}
+
+#bigProfilePage :is(.bigProfilePageA .pageADates, .bigProfilePageB .pageBColumnDate) .profileField {
+    align-items: center;
+    background: var(--colorGroupMain);
+    border-radius: 1rem;
+    box-shadow: var(--shadowA);
+    color: var(--colorFondoA);
+    display: flex;
+    font: 1rem/1em var(--fontCondensed);
+    font-stretch: var(--fontWCond);
+    gap: .5rem;
+    justify-content: center;
+    padding: 1rem
+}
+
+#bigProfilePage :is(.bigProfilePageA .pageADetailsProfile, .bigProfilePageB .pageBColumnDate) .profileField .fieldTitle {
+    display: flex;
+    font-size: 0;
+    line-height: 1em;
+    text-transform: uppercase
+}
+
+#bigProfilePage :is(.bigProfilePageA .pageADetailsProfile, .bigProfilePageB .pageBColumnDate) .profileField:not(#field_id7, #field_id21) .fieldTitle span {
+    color: var(--colorFondoA) !important;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+#bigProfilePage .bigProfilePageA .profileField:is(#field_id7, #field_id21) {
+    display: contents
+}
+
+#bigProfilePage .bigProfilePageA .profileField:is(#field_id7, #field_id21) .fieldContent {
+    background: var(--windowed-effect-v);
+    border-radius: 1rem;
+    box-shadow: var(--shadowA);
+    grid-column: span 2;
+    height: 17rem;
+    margin: 0;
+    padding: .1rem
+}
+
+#bigProfilePage .bigProfilePageA .pageADetailsProfile .profileField:is(#field_id7, #field_id21) .fieldTitle {
+    margin: 0 0 1rem;
+}
+
+#bigProfilePage .bigProfilePageA .pageADetailsProfile .profileField:is(#field_id7, #field_id21) .fieldTitle span {
+    color: var(--colorGroupMain) !important;
+    font: 900 2rem/1em var(--fontDisplay)
+}
+
+#bigProfilePage .bigProfilePageA .pageADetailsProfile .profileField:is(#field_id7, #field_id21) .field_uneditable {
+    background: var(--colorFondoA);
+    border-radius: 1rem;
+    height: 100%;
+}
+
+#bigProfilePage .bigProfilePageA .pageADetailsProfile .profileField:is(#field_id7, #field_id21) .field_uneditable :is(strong, b, i, em) {
+    color: var(--colorGroupMain)
+}
+
+#bigProfilePage .bigProfilePageA .pageADetailsProfile .profileField:is(#field_id7, #field_id21) .field_uneditable {
+    height: 100%;
+    overflow: auto;
+    padding: 2rem
+}
+
+#bigProfilePage .bigProfilePageA .pageADetailsProfile .profileField:is(#field_id21) .field_uneditable {
+    align-items: center;
+    display: grid;
+    gap: .5rem;
+    grid-template-columns: repeat(auto-fit, 3rem);
+    grid-template-rows: repeat(auto-fit, 3rem);
+    justify-content: center
+}
+
+#field_id21 .medalsProfile {
+    align-items: center;
+    background: var(--itemDisplay) center/contain no-repeat;
+    display: flex;
+    flex-direction: column;
+    height: 3rem;
+    text-align: center;
+    width: 3rem
+}
+
+#field_id21 .medalsProfile.fondo {
+    border: .1rem solid var(--colorGroupMain);
+    border-radius: .5rem;
+}
+
+#bigProfilePage .bigProfileLinks {
+    grid-column: 1/span 2;
+    grid-row: 2;
+}
+
+:is(#cardProfile, .pageARank) .fieldTitle {
+    display: none
+}
+
+/*Page B*/
+#bigProfilePage .bigProfilePageB {
+    align-items: center;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between
+}
+
+#cardProfile {
+    flex-shrink: 0;
+    box-shadow: var(--shadowA);
+    overflow: hidden
+}
+
+#cardProfile * {
+    z-index: 1
+}
+
+.cardBorder {
+    background: var(--colorFondoB);
+    border-radius: .5rem;
+    color: var(--colorTextA);
+    display: grid;
+    grid-template-columns: repeat(50, 1fr);
+    grid-template-rows: repeat(70, 1fr);
+    height: 700px;
+    width: 500px
+}
+
+.cardBackground {
+    background: linear-gradient(45deg, var(--colorFondoB), var(--colorGroupMain));
+    box-shadow: 0 0 3rem -2rem var(--colorTextA);
+    grid-column: 2/span 48;
+    grid-row: 2/span 68
+}
+
+.cardBackground:before {
+    background: url('https://i.servimg.com/u/f70/20/61/18/37/patron11.png');
+    content: "";
+    display: block;
+    height: 100%;
+    opacity: .25;
+    width: 100%
+}
+
+.cardImage {
+    background: var(--retratoCarta) center/cover;
+    border: .5rem solid var(--colorFondoB);
+    border-radius: .5rem;
+    box-shadow: 0 0 1.5rem -.5rem var(--colorFondoA);
+    grid-column: 7/span 38;
+    grid-row: 13/span 38
+}
+
+.cardTitle {
+    align-items: center;
+    background: var(--colorFondoA);
+    border: .25rem solid var(--colorFondoB);
+    border-radius: .25rem;
+    box-shadow: 0 0 1.5rem -.5rem var(--colorFondoA);
+    display: flex;
+    gap: .5rem;
+    grid-column: 4/span 44;
+    grid-row: 4/span 6;
+    justify-content: space-between;
+    padding: 1rem
+}
+
+.cardName {
+    flex-grow: 1;
+    font: 500 1.5rem/1em var(--fontSans);
+    font-variant: small-caps;
+    overflow: visible;
+    white-space: nowrap;
+    width: calc(100% - .5rem - 1.5rem)
+}
+
+.cardName .field_uneditable {
+    transform-origin: left center;
+}
+
+.cardAtribute {
+    flex-shrink: 0;
+}
+
+.cardAtribute .field_uneditable div.attr-tag {
+    align-items: center;
+    background: var(--colorAtributo);
+    border-radius: 50%;
+    color: var(--colorFondoA);
+    display: flex;
+    flex-direction: column;
+    font-size: .5rem;
+    height: 1.5rem;
+    justify-content: center;
+    text-shadow: 0 0 .5rem var(--colorFondoB);
+    width: 1.5rem
+}
+
+.cardAtribute .field_uneditable div.attr-tag div.material-symbols-rounded {
+    font-size: 1rem;
+}
+
+.cardRank {
+    align-items: flex-end;
+    display: flex;
+    font: 700 1rem/1em var(--fontSans);
+    grid-column: 7/span 38;
+    grid-row: 8/span 4;
+    justify-content: flex-end
+}
+
+.cardRankCont {
+    align-items: center;
+    background: var(--colorFondoB);
+    box-shadow: 0 0 1rem -.5rem var(--colorFondoA);
+    border-radius: .25rem;
+    display: flex;
+    gap: .25rem;
+    justify-content: flex-end;
+    padding: .5rem
+}
+
+.cardRank .material-symbols-rounded {
+    font-size: 1rem;
+}
+
+.cardRank .rankName {
+    font-style: normal;
+    font-variant: small-caps;
+}
+
+.cardSerial {
+    align-items: center;
+    display: flex;
+    font: 1rem/1rem var(--fontCondensed);
+    font-stretch: var(--fontWCond);
+    grid-column: 7/span 38;
+    grid-row: 51/span 2;
+    justify-content: flex-end;
+    text-transform: uppercase
+}
+
+.cardDescription {
+    background: var(--colorFondoA);
+    border: .25rem solid var(--colorFondoB);
+    border-radius: .25rem;
+    box-shadow: 0 0 1.5rem -.5rem var(--colorFondoA);
+    display: flex;
+    flex-direction: column;
+    grid-column: 4/span 44;
+    grid-row: 53/span 15;
+    hyphens: auto;
+    justify-content: space-between;
+    padding: .5rem;
+    text-align: justify
+}
+
+.cardRace {
+    display: flex;
+    flex-shrink: 0;
+    font: 700 1rem/1em var(--fontSans);
+    font-variant: small-caps
+}
+
+.cardRace #field_id5 {
+    display: flex;
+}
+
+.cardRace #field_id5:before {
+    content: "/"
+}
+
+.cardText {
+    flex-grow: 1;
+    font: 1rem/1em var(--fontCondensed);
+    font-stretch: var(--fontWCond);
+    height: calc(100% - 2rem)
+}
+
+.cardPoints {
+    border-top: .1rem solid var(--colorTextA);
+    display: flex;
+    flex-shrink: 0;
+    font: 500 1rem/1em var(--fontCondensed);
+    font-stretch: var(--fontWCond);
+    justify-content: flex-end;
+    padding-top: .25rem;
+    text-transform: uppercase
+}
+
+.cardPoints:before {
+    content: "PdR/"
+}
+
+.cardCopyright {
+    align-items: center;
+    display: flex;
+    font: 1rem/1rem var(--fontCondensed);
+    font-stretch: var(--fontWCond);
+    grid-column: 4/span 44;
+    grid-row: 68/span 2;
+    justify-content: flex-end
+}
+
+.pageBColumn {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%
+}
+
+#bigProfilePage .pageBColumnPartner {
+    align-items: center;
+    display: grid;
+    gap: 0 1rem;
+    justify-content: center;
+    margin: 0 2rem
+}
+
+#bigProfilePage .pageBColumnPartner h3.pageBColumnPartnerTitle {
+    border: 0;
+    color: var(--colorGroupMain);
+    font: 900 2rem/1em var(--fontDisplay);
+    font-stretch: var(--fontWExpn);
+    grid-column: span 2;
+    margin: 0 0 1rem;
+    text-align: center;
+    text-transform: uppercase
+}
+
+#bigProfilePage .pageBColumnPartner .pageBColumnPartnerIcon {
+    background: var(--iconoPareja) center/cover;
+    border: .1rem solid var(--colorGroupMain);
+    border-radius: 50%;
+    box-shadow: var(--shadowA);
+    grid-column: 1;
+    grid-row: 2/span 2;
+    height: 8rem;
+    width: 8rem;
+}
+
+#bigProfilePage .pageBColumnPartner #field_id18 {
+    align-items: flex-end;
+    color: var(--colorGroupMain);
+    font: 700 1.5rem/1em var(--fontDisplay);
+    display: flex;
+    grid-column: 2;
+    grid-row: 2;
+    height: 100%;
+    text-transform: uppercase;
+}
+
+#bigProfilePage .pageBColumnPartner #field_id22 {
+    font: 1rem/1em var(--fontCondensed);
+    font-stretch: var(--fontWCond);
+    display: flex;
+    grid-column: 2;
+    grid-row: 3;
+    height: 100%;
+}
+
+#bigProfilePage .pageBColumnPartner .fieldTitle {
+    display: none
+}
+
+#bigProfilePage .pageBColumnDate {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 3rem)
+}
+
+#bigProfilePage .pageBColumnAwards {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 1rem
+}
+
+#bigProfilePage .pageBColumnAwards h3 {
+    border: 0;
+    color: var(--colorGroupMain) !important;
+    font: 900 2rem/1em var(--fontDisplay);
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase
+}
+
+#bigProfilePage .pageBColumnAwards .awards_window {
+    border-radius: 1rem;
+    box-shadow: var(--shadowA);
+    flex-grow: 1;
+    margin: 0;
+    padding: .1rem;
+}
+
+#bigProfilePage .pageBColumnAwards .awards_block {
+    align-items: center;
+    background: var(--colorFondoA);
+    border-radius: 1rem;
+    display: grid;
+    gap: .5rem;
+    grid-template-columns: repeat(auto-fit, 3rem);
+    grid-template-rows: repeat(auto-fit, 3rem);
+    height: 100%;
+    justify-content: center;
+    max-height: none;
+    overflow: auto;
+    padding: 2rem;
+}
+
+#bigProfilePage .pageBColumnAwards .awards_block .award {
+    border: 0;
+    border-radius: 0;
+    height: 3rem;
+    margin: 0;
+    padding: 0;
+    width: 3rem
+}
+
+/*Page C*/
+#bigProfilePage .bigProfilePageC {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 0 1fr 8rem 1fr 0;
+    grid-template-rows: repeat(6, 1fr)
+}
+
+#bigProfilePage .bigProfilePageC .pageCBanner {
+    border-radius: 1rem;
+    box-shadow: var(--shadowA);
+    grid-column: 1/span 5;
+    grid-row: 1/span 3;
+    height: 400px;
+    padding: .1rem
+}
+
+#bigProfilePage .bigProfilePageC .pageCBannerIMG {
+    background: var(--bannerPrincipal) center/cover;
+    border-radius: 1rem;
+    height: 100%;
+}
+
+#bigProfilePage .bigProfilePageC .pageCResume {
+    grid-column: 2;
+    grid-row: 3/span 4;
+}
+
+#bigProfilePage .bigProfilePageC .pageCPhrase {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    grid-column: 3;
+    grid-row: 4/span 3;
+    justify-content: center
+}
+
+#bigProfilePage .bigProfilePageC .pageCPhrase .pageCPhraseIcon {
+    border-radius: 50%;
+    box-shadow: var(--shadowA);
+    flex-shrink: 0;
+    height: 8rem;
+    padding: .1rem;
+    width: 8rem
+}
+
+#bigProfilePage .bigProfilePageC .pageCPhrase .pageCPhraseIconIMG {
+    background: var(--iconoPerfil) center/cover;
+    border-radius: 50%;
+    height: 100%
+}
+
+#bigProfilePage .bigProfilePageC .pageCPhrase .fieldTitle {
+    display: none;
+}
+
+#bigProfilePage .bigProfilePageC .pageCPhrase .profileField {
+    display: flex;
+    flex-grow: 1;
+    font: 1rem/1em var(--fontSans);
+    justify-content: center;
+    text-align: center;
+    writing-mode: sideways-lr
+}
+
+#bigProfilePage .bigProfilePageC .pageCSkills {
+    grid-column: 4;
+    grid-row: 3/span 2;
+}
+
+#bigProfilePage .bigProfilePageC .pageCTalents {
+    grid-column: 4;
+    grid-row: 5/span 2;
+}
+
+#bigProfilePage .bigProfilePageC :is(.pageCResume, .pageCSkills, .pageCTalents) .profileField {
+    background: var(--windowed-effect-v);
+    border-radius: 1rem;
+    box-shadow: var(--shadowA);
+    grid-column: span 2;
+    height: calc(100% - 2.5rem);
+    margin: 2.5rem 0 0;
+    padding: .1rem
+}
+
+#bigProfilePage .bigProfilePageC :is(.pageCResume, .pageCSkills, .pageCTalents) .profileField .fieldTitle {
+    display: flex;
+    font-size: 0;
+    line-height: 1em;
+    margin: -2.5rem 0 1rem;
+    text-transform: uppercase
+}
+
+#bigProfilePage .bigProfilePageC :is(.pageCResume, .pageCSkills, .pageCTalents) .profileField .fieldTitle span {
+    color: var(--colorGroupMain) !important;
+    font: 900 1.5rem/1em var(--fontDisplay)
+}
+
+#bigProfilePage .bigProfilePageC :is(.pageCResume, .pageCSkills, .pageCTalents) .profileField .fieldContent {
+    background: var(--colorFondoA);
+    border-radius: 1rem;
+    height: 100%;
+    overflow: auto;
+    padding: 2rem;
+}
+
+#bigProfilePage .bigProfilePageC :is(.pageCResume, .pageCSkills, .pageCTalents) .profileField .fieldContent :is(strong, b, i, em) {
+    color: var(--colorGroupMain)
+}
+
+#bigProfilePage .bigProfilePageC .pageCSkills .profileField .fieldContent .field_uneditable {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem
+}
+
+#bigProfilePage .profileSkills {
+    align-items: center;
+    display: flex;
+    gap: 1rem
+}
+
+#bigProfilePage .profileSkillsIcon {
+    color: var(--colorGroupMain);
+    font-size: 2rem !important;
+}
+
+#bigProfilePage .profileSkillsContent {
+    display: flex;
+    flex-direction: column;
+    hyphens: auto;
+    text-align: justify
+}
+
+#bigProfilePage .profileSkillsTitle {
+    color: var(--colorGroupMain);
+    font: 700 1rem/1em var(--fontDisplay);
+    font-stretch: var(--fontWExpn);
+    text-transform: uppercase
+}
+
+#bigProfilePage .profileSkillsDesc {
+    font: 1rem/1em var(--fontCondensed);
+    font-stretch: var(--fontWCond);
+}
+
+.bigProfileLinks {
+    align-items: center;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between
+}
+
+:is(.linksAdministrator, .linksContact, .linksContact form, .linksSearch) {
+    align-items: center;
+    display: flex;
+    gap: 1rem
+}
+
+.linksAdministratorButton {
+    font-size: 0;
+}
+
+:is(.linksAdministrator, .linksContact, .linksContact form, .linksSearch) a {
+    align-items: center;
+    background: var(--colorGroupMain);
+    border-radius: .5rem;
+    box-shadow: var(--shadowA);
+    color: var(--colorFondoA);
+    display: flex;
+    font: 700 1rem/1em var(--fontCondensed);
+    font-stretch: var(--fontWCond);
+    gap: .25rem;
+    padding: .5rem;
+    text-transform: uppercase;
+}
+
+:is(.linksAdministrator, .linksContact, .linksContact form, .linksSearch) a:hover {
+    background: var(--colorHover);
+}
+
+:is(.linksAdministrator, .linksContact, .linksContact form, .linksSearch) a:before,
+a.linksSearchButton span.material-symbols-rounded {
+    font: 1rem/1em var(--fontGoogle);
+    font-variation-settings: var(--iconSmall)
+}
+
+.linksAdministrator #Administrate a:before {
+    content: "server_person"
+}
+
+.linksAdministrator #Ban a:before {
+    content: "gavel"
+}
+
+.contactField a img {
+    display: none
+}
+
+.contactField a:has(#i_icon_pm):before {
+    content: "forward_to_inbox"
+}
+
+.contactField a:has(#i_icon_pm):after {
+    content: "Enviar MP"
+}
+
+.contactField.c1 a:before {
+    content: "article"
+}
+
+.contactField.c1 a:after {
+    content: "Ficha"
+}
+
+.contactField.c2 a:before {
+    content: "box"
+}
+
+.contactField.c2 a:after {
+    content: "Baúl"
+}
+
+.contactField.c3 a:before {
+    content: "book_2"
+}
+
+.contactField.c3 a:after {
+    content: "Diario"
+}
+
+.contactField.c32 a:before {
+    content: "groups_3"
+}
+
+.contactField.c32 a:after {
+    content: "NPC's"
+}
+
+.contactField.c:nth-child(2) {
+    display: none;
+}
+
+/* Contenedor del campo principal */
+#field_id28 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 390px;
+    height: 390px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.rpg-chart-container {
+    width: 390px;
+    height: 390px;
+    display: block;
+}
+
+/* Tablero de fondo sólido usando tu color de fondo primario */
+.chart-base-solid {
+    fill: var(--colorFondoA, #0D0D0D);
+    stroke: var(--colorFondoB, #222222);
+    stroke-width: 2;
+}
+
+/* Las 9 guías de niveles internos */
+.chart-grid-line {
+    fill: none;
+    stroke: rgba(242, 242, 242, 0.04);
+    /* Un toque sutil de tu --colorTextA */
+    stroke-width: 1;
+}
+
+/* Los ejes radiales */
+.chart-axis {
+    stroke: rgba(242, 242, 242, 0.07);
+    stroke-width: 1;
+}
+
+/* Polígono de estadísticas del usuario */
+.chart-user-polygon {
+    /* El relleno usa tu color de grupo con una transparencia sutil */
+    fill: rgba(111, 107, 242, 0.25);
+    /* Basado en tu #6F6BF2 con opacidad */
+    fill: color-mix(in srgb, var(--colorGroupMain) 25%, transparent);
+    /* Soporte moderno para mezclar variables */
+
+    stroke: var(--colorGroupMain, #6F6BF2);
+    /* El borde brilla con el color del grupo/rango */
+    stroke-width: 3;
+    stroke-linejoin: round;
+    filter: drop-shadow(0 0 4px var(--colorShadow));
+    /* Sombra usando tu variable */
+}
+
+/* Los pequeños nodos en cada vértice del jugador */
+.chart-user-point {
+    fill: var(--colorTextA, #F2F2F2);
+    stroke: var(--colorGroupMain, #6F6BF2);
+    stroke-width: 1.5;
+}
+
+/* === CAJITA CUADRADA DEL NÚMERO (26px) === */
+.chart-tag-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--colorFondoB, #222222);
+    /* Fondo B para que resalte sobre el Fondo A del gráfico */
+    border: 2px solid var(--colorGroupMain, #6F6BF2);
+    /* Borde que se acopla al color del grupo */
+    border-radius: 4px;
+    box-sizing: border-box;
+
+    color: var(--colorTextA, #F2F2F2);
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: help;
+
+    box-shadow: 0 2px 6px var(--colorShadow);
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Efecto hover interactivo al pasar el cursor sobre un número */
+.chart-tag-box:hover {
+    background-color: var(--colorHover, #FCC8FF);
+    /* Tu color de hover rosa/neón */
+    border-color: var(--colorHover, #FCC8FF);
+    color: var(--colorAbsolute, black);
+    /* Contraste perfecto para el rosa de hover */
+    transform: scale(1.15);
+    box-shadow: 0 0 10px var(--colorHover);
+    /* Efecto de brillo neón al pasar el mouse */
+}
