@@ -7,8 +7,10 @@
     const LADO_CAJA = 26;
     const RADIO = CENTRO - (LADO_CAJA / 2); 
 
-    const obtenerCoordenadas = (indice, valor, maximo) => {
-        const angulo = (Math.PI * 2 / 5) * indice - (Math.PI / 2);
+    // CALCULADORA DINÁMICA DE COORDENADAS
+    // Ahora recibe 'totalStats' para dividir el círculo en N partes iguales
+    const obtenerCoordenadas = (indice, valor, maximo, totalStats) => {
+        const angulo = (Math.PI * 2 / totalStats) * indice - (Math.PI / 2);
         const distancia = (valor / maximo) * RADIO;
         return {
             x: CENTRO + distancia * Math.cos(angulo),
@@ -16,7 +18,7 @@
         };
     };
 
-    const generarGraficoPentagonoPerfil = () => {
+    const generarGraficoPerfilAdaptativo = () => {
         const campoStats = document.getElementById('field_id28');
         if (!campoStats) return;
 
@@ -37,38 +39,40 @@
             });
         }
 
-        if (stats.length !== 5) return;
+        // Se necesitan al menos 3 puntos para formar un polígono
+        const totalStats = stats.length;
+        if (totalStats < 3) return;
 
         const maximoGrafico = MAX_VALOR; 
 
-        // 1. PENTÁGONO BASE SÓLIDO (Este representa el Nivel 10)
+        // 1. POLÍGONO BASE SÓLIDO (N lados)
         const puntosBase = [];
-        for (let i = 0; i < 5; i++) {
-            const p = obtenerCoordenadas(i, maximoGrafico, maximoGrafico);
+        for (let i = 0; i < totalStats; i++) {
+            const p = obtenerCoordenadas(i, maximoGrafico, maximoGrafico, totalStats);
             puntosBase.push(`${p.x},${p.y}`);
         }
-        const pentagonoBaseHTML = `<polygon points="${puntosBase.join(' ')}" class="chart-base-solid" />`;
+        const poligonoBaseHTML = `<polygon points="${puntosBase.join(' ')}" class="chart-base-solid" />`;
 
-        // NUEVO: Dibujamos las guías internas para los niveles del 1 al 9
+        // 2. GUÍAS INTERNAS (Niveles del 1 al 9)
         let lineasGuiaHTML = '';
         for (let nivel = 1; nivel <= 9; nivel++) {
-            const escala = nivel / MAX_VALOR; // Fracción exacta (0.1, 0.2 ... 0.9)
+            const escala = nivel / MAX_VALOR;
             const puntosGuia = [];
-            for (let i = 0; i < 5; i++) {
-                const p = obtenerCoordenadas(i, escala * maximoGrafico, maximoGrafico);
+            for (let i = 0; i < totalStats; i++) {
+                const p = obtenerCoordenadas(i, escala * maximoGrafico, maximoGrafico, totalStats);
                 puntosGuia.push(`${p.x},${p.y}`);
             }
             lineasGuiaHTML += `<polygon points="${puntosGuia.join(' ')}" class="chart-grid-line" />`;
         }
 
-        // 2. EJES, POLÍGONO DEL JUGADOR Y BOTONES DE NÚMEROS
+        // 3. EJES, POLÍGONO DEL JUGADOR Y BOTONES DE NÚMEROS
         let ejesHTML = '';
         let contenedoresHTML = '';
         const puntosUsuario = [];
 
         stats.forEach((stat, i) => {
-            const pMax = obtenerCoordenadas(i, maximoGrafico, maximoGrafico);
-            const pUser = obtenerCoordenadas(i, stat.valor, maximoGrafico);
+            const pMax = obtenerCoordenadas(i, maximoGrafico, maximoGrafico, totalStats);
+            const pUser = obtenerCoordenadas(i, stat.valor, maximoGrafico, totalStats);
             
             puntosUsuario.push(`${pUser.x},${pUser.y}`);
             ejesHTML += `<line x1="${CENTRO}" y1="${CENTRO}" x2="${pMax.x}" y2="${pMax.y}" class="chart-axis" />`;
@@ -85,16 +89,16 @@
             `;
         });
 
-        // 3. ENSAMBLAR SVG
+        // 4. ENSAMBLAR SVG
         const svgHTML = `
             <div class="rpg-chart-container">
                 <svg viewBox="0 0 ${TAMANO} ${TAMANO}" width="100%" height="100%">
-                    ${pentagonoBaseHTML}
+                    ${poligonoBaseHTML}
                     ${lineasGuiaHTML}
                     ${ejesHTML}
                     <polygon points="${puntosUsuario.join(' ')}" class="chart-user-polygon" />
                     ${stats.map((stat, i) => {
-                        const p = obtenerCoordenadas(i, stat.valor, maximoGrafico);
+                        const p = obtenerCoordenadas(i, stat.valor, maximoGrafico, totalStats);
                         return `<circle cx="${p.x}" cy="${p.y}" r="3.5" class="chart-user-point" />`;
                     }).join('')}
                     ${contenedoresHTML}
@@ -106,8 +110,8 @@
     };
 
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', generarGraficoPentagonoPerfil);
+        document.addEventListener('DOMContentLoaded', generarGraficoPerfilAdaptativo);
     } else {
-        generarGraficoPentagonoPerfil();
+        generarGraficoPerfilAdaptativo();
     }
 })();
