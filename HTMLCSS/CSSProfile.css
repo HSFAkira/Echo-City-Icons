@@ -56,9 +56,9 @@
 #bigProfilePage:has(input#bigProfilePageA:checked) label.bigProfilebutton[for="bigProfilePageA"],
 #bigProfilePage:has(input#bigProfilePageB:checked) label.bigProfilebutton[for="bigProfilePageB"],
 #bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageC"],
-#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageD"],
-#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageE"],
-#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageF"] {
+#bigProfilePage:has(input#bigProfilePageD:checked) label.bigProfilebutton[for="bigProfilePageD"],
+#bigProfilePage:has(input#bigProfilePageE:checked) label.bigProfilebutton[for="bigProfilePageE"],
+#bigProfilePage:has(input#bigProfilePageF:checked) label.bigProfilebutton[for="bigProfilePageF"] {
     color: var(--colorGroupMain)
 }
 
