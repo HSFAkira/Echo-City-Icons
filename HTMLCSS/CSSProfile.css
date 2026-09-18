@@ -48,7 +48,9 @@
 }
 
 #bigProfilePage .bigProfilebuttons label.bigProfilebutton .bigProfilebuttonText {
+    border-radius: .5rem;
     color: var(--colorTextB);
+    padding: 0 .5rem;
 }
 
 #bigProfilePage:has(input#bigProfilePageA:checked) label.bigProfilebutton[for="bigProfilePageA"],
@@ -75,7 +77,8 @@
 #bigProfilePage:has(input#bigProfilePageD:checked) label.bigProfilebutton[for="bigProfilePageD"],
 #bigProfilePage:has(input#bigProfilePageE:checked) label.bigProfilebutton[for="bigProfilePageE"],
 #bigProfilePage:has(input#bigProfilePageF:checked) label.bigProfilebutton[for="bigProfilePageF"]) .bigProfilebuttonText {
-    background-color: var(--colorGroupMain)
+    background-color: var(--colorGroupMain);
+    color: var(--colorTextA);
 }
 
 #bigProfilePage :is(.bigProfilePageA, .bigProfilePageB, .bigProfilePageC, .bigProfilePageD, .bigProfilePageE, .bigProfilePageF) {
