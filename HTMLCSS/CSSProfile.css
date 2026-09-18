@@ -53,23 +53,32 @@
 
 #bigProfilePage:has(input#bigProfilePageA:checked) label.bigProfilebutton[for="bigProfilePageA"],
 #bigProfilePage:has(input#bigProfilePageB:checked) label.bigProfilebutton[for="bigProfilePageB"],
-#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageC"] {
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageC"],
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageD"],
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageE"],
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageF"] {
     color: var(--colorGroupMain)
 }
 
 :is(#bigProfilePage:has(input#bigProfilePageA:checked) label.bigProfilebutton[for="bigProfilePageA"],
 #bigProfilePage:has(input#bigProfilePageB:checked) label.bigProfilebutton[for="bigProfilePageB"],
-#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageC"])::before {
-    content: "open_folder";
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageC"],
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageD"],
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageE"],
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageF"])::before {
+    content: "folder_open";
 }
 
 :is(#bigProfilePage:has(input#bigProfilePageA:checked) label.bigProfilebutton[for="bigProfilePageA"],
 #bigProfilePage:has(input#bigProfilePageB:checked) label.bigProfilebutton[for="bigProfilePageB"],
-#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageC"]) .bigProfilebuttonText {
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageC"],
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageD"],
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageE"],
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageF"]) .bigProfilebuttonText {
     background-color: var(--colorGroupMain)
 }
 
-#bigProfilePage :is(.bigProfilePageA, .bigProfilePageB, .bigProfilePageC) {
+#bigProfilePage :is(.bigProfilePageA, .bigProfilePageB, .bigProfilePageC, .bigProfilePageD, .bigProfilePageE, .bigProfilePageF) {
     grid-column: 1;
     grid-row: 2;
     height: 750px;
@@ -79,7 +88,7 @@
     transition: .5s
 }
 
-#bigProfilePage :is(.bigProfilePageA, .bigProfilePageB, .bigProfilePageC):has(input[name="bigProfileButtons"]:checked) {
+#bigProfilePage :is(.bigProfilePageA, .bigProfilePageB, .bigProfilePageC, .bigProfilePageD, .bigProfilePageE, .bigProfilePageF):has(input[name="bigProfileButtons"]:checked) {
     opacity: 1;
     pointer-events: auto;
 }
