@@ -5,7 +5,6 @@
     --windowed-effect-x: linear-gradient(135deg, var(--colorGroupMain), var(--colorFondoB));
     display: grid;
     gap: 2rem;
-    grid-template-columns: auto 150px;
 }
 
 #bigProfilePage input[name="bigProfileButtons"] {
@@ -38,10 +37,12 @@
     color: var(--colorGroupMain)
 }
 
-#bigProfilePage .bigProfilebuttons label.bigProfilebutton .bigProfilebuttonIcon {
+#bigProfilePage .bigProfilebuttons label.bigProfilebutton::before {
     align-items: center;
+    content: "folder";
+    font: 3rem / 1em var(--fontGoogle);
+    font-variation-settings: var(--iconBig);
     display: flex;
-    font-size: 3rem;
     justify-content: center;
     margin: 0 0 1rem;
 }
@@ -54,6 +55,12 @@
 #bigProfilePage:has(input#bigProfilePageB:checked) label.bigProfilebutton[for="bigProfilePageB"],
 #bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageC"] {
     color: var(--colorGroupMain)
+}
+
+:is(#bigProfilePage:has(input#bigProfilePageA:checked) label.bigProfilebutton[for="bigProfilePageA"],
+#bigProfilePage:has(input#bigProfilePageB:checked) label.bigProfilebutton[for="bigProfilePageB"],
+#bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageC"])::before {
+    content: "open_folder";
 }
 
 :is(#bigProfilePage:has(input#bigProfilePageA:checked) label.bigProfilebutton[for="bigProfilePageA"],
