@@ -28,8 +28,8 @@
     border-radius: 1rem;
     color: var(--colorTextB);
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
-    font-size: 2rem;
     justify-content: center;
     margin: 2rem
 }
@@ -41,8 +41,9 @@
 #bigProfilePage .bigProfilebuttons label.bigProfilebutton .bigProfilebuttonIcon {
     align-items: center;
     display: flex;
-    font-size: 2rem;
+    font-size: 3rem;
     justify-content: center;
+    margin: 0 0 1rem;
 }
 
 #bigProfilePage .bigProfilebuttons label.bigProfilebutton .bigProfilebuttonText {
@@ -55,7 +56,7 @@
     color: var(--colorGroupMain)
 }
 
-is:(#bigProfilePage:has(input#bigProfilePageA:checked) label.bigProfilebutton[for="bigProfilePageA"],
+:is(#bigProfilePage:has(input#bigProfilePageA:checked) label.bigProfilebutton[for="bigProfilePageA"],
 #bigProfilePage:has(input#bigProfilePageB:checked) label.bigProfilebutton[for="bigProfilePageB"],
 #bigProfilePage:has(input#bigProfilePageC:checked) label.bigProfilebutton[for="bigProfilePageC"]) .bigProfilebuttonText {
     background-color: var(--colorGroupMain)
