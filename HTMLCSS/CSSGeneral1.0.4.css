@@ -1448,6 +1448,10 @@ p.descriptionSite em {
     background: url('https://i.servimg.com/u/f70/20/61/18/37/icon113.png') center/100% no-repeat;
 }
 
+.staffSection:has(a[href="/u549"]) .staffPortraitIMG {
+    background: url('https://i.servimg.com/u/f70/20/61/18/37/icon114.png') center/100% no-repeat;
+}
+
 /*Temas libres*/
 #freeTopics {
     border-radius: 1em 1em 0 1em;
